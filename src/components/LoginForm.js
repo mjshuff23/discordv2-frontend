@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
+import { NavLink } from "react-router-dom";
 import { login } from "../store/actions/authentication";
+import './stylesheets/LoginForm.css'
 
 const LoginPanel = (props) => {
   const [email, setEmail] = useState("s@gmail.com");
@@ -21,23 +23,26 @@ const LoginPanel = (props) => {
   };
 
   return (
-    <main className="centered middled">
+    <div className="loginForm">
       <form onSubmit={handleSubmit}>
         <input
+          className="loginForm__input"
           type="text"
           placeholder="Email"
           value={email}
           onChange={updateEmail}
         />
         <input
+          className="loginForm__input"
           type="password"
           placeholder="Password"
           value={password}
           onChange={updatePassword}
         />
-        <button type="submit">Login</button>
+        <button className="loginForm__button" type="submit">Login</button>
       </form>
-    </main>
+      <NavLink to="/landing">Need an account? Sign up here!</NavLink>
+    </div>
   );
 };
 

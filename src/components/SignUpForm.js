@@ -1,8 +1,9 @@
 import React from 'react'
 import { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
-import { Redirect } from 'react-router-dom'
+import { NavLink, Redirect } from 'react-router-dom'
 import { register } from '../store/actions/authentication'
+import './stylesheets/SignUpForm.css'
 
 function SignUpForm() {
     const token = useSelector((state) => state.authentication.token)
@@ -39,33 +40,39 @@ function SignUpForm() {
 
     return (
         <div className="signUpForm">
+            <h2>Sign Up here</h2>
             <form onSubmit={handleSubmit}>
                 <input
+                className="signUpForm__input"
                 type="text"
                 placeholder="Username"
                 value={username}
                 onChange={updateUsername}
                 />
                 <input
+                className="signUpForm__input"
                 type="text"
                 placeholder="Email"
                 value={email}
                 onChange={updateEmail}
                 />
                 <input
+                className="signUpForm__input"
                 type="password"
                 placeholder="password"
                 value={password}
                 onChange={updatePassword}
                 />
                 <input
+                className="signUpForm__input"
                 type="password"
                 placeholder="password"
                 value={confirmPassword}
                 onChange={updateConfirmPassword}
                 />
-                <button type="submit">Sign Up!</button>
+                <button className="signUpForm__button" type="submit">Sign Up!</button>
             </form>
+            <NavLink to='/login'>Already have an account?</NavLink>
 
         </div>
     )

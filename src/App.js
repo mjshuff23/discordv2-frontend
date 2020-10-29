@@ -6,6 +6,7 @@ import { ProtectedRoute, PrivateRoute } from "./util/route-util";
 import LoginForm from './components/LoginForm';
 import Test from './components/Test';
 import SignUpForm from "./components/SignUpForm";
+import LandingPage from "./components/LandingPage";
 
 function App({ needLogin, loadToken }) {
   const [loaded, setLoaded] = useState(false);
@@ -21,7 +22,7 @@ function App({ needLogin, loadToken }) {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path ="/signup" component={SignUpForm} />
+        <Route path ="/landing" component={LandingPage} />
         <ProtectedRoute
           path="/login"
           exact={true}
