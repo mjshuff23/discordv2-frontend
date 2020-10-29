@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { BrowserRouter, Redirect, Switch } from "react-router-dom";
+import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { loadToken } from "./store/actions/authentication";
 import { ProtectedRoute, PrivateRoute } from "./util/route-util";
 import LoginForm from './components/LoginForm';
 import Test from './components/Test';
+import SignUpForm from "./components/SignUpForm";
 
 function App({ needLogin, loadToken }) {
   const [loaded, setLoaded] = useState(false);
@@ -20,6 +21,7 @@ function App({ needLogin, loadToken }) {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path ="/signup" component={SignUpForm} />
         <ProtectedRoute
           path="/login"
           exact={true}
@@ -28,10 +30,13 @@ function App({ needLogin, loadToken }) {
         />
         <PrivateRoute
           path="/"
+          exact={true}
           needLogin={needLogin}
           component={Test}
         />
+
         <Redirect to="/" />
+
       </Switch>
     </BrowserRouter>
   );

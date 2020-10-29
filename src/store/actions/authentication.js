@@ -42,3 +42,19 @@ export const logout = () => async (dispatch, getState) => {
     dispatch(removeToken());
   }
 };
+
+export const register = (username, email, password) => async (dispatch) => {
+  console.log('here');
+  const response = await fetch(`http://localhost:8080/users`, {
+    method: 'post',
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ username, email, password })
+  });
+  if (response.ok) {
+
+    const { token, user} = await response.json();
+    window.localStorage.setItem(TOKEN_KEY, token)
+    // window.localStorage.setItem('userId', user.id)
+    dispatch(setToken(token));
+  }
+}
