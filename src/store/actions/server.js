@@ -1,9 +1,8 @@
 const baseUrl = "http://localhost:8080";
 export const ADD_SERVER = 'discord/server/ADD_SERVER'
-export const ADD_SERVERS = 'discord/server/GET_SERVERS'
+export const ADD_SERVERS = 'discord/server/ADD_SERVERS'
 
 export const addServer = (title, serverId) => ({type: ADD_SERVER, title, serverId });
-export const addServers = (servers) => ({type: ADD_SERVERS, servers})
 
 export const createServer = (title) => async (dispatch) => {
     console.log(title)
@@ -25,13 +24,14 @@ export const createServer = (title) => async (dispatch) => {
 export const getServers = () => async (dispatch) => {
     console.log('here');
     const userId = window.localStorage.getItem('userId')
-    const response = await fetch(`${baseUrl}/servers`, {
-        body: JSON.stringify({ userId }),
-      });
+    const response = await fetch(`${baseUrl}/servers/${userId}`)
+
     const data= await response.json();
 
       if (response.ok) {
-        console.log(data)
-
+        for (let server of data.servers) {
+          // console.log(server.title);
+          dispatch(addServer(server.title, server.id));
+        }
       }
 }

@@ -8,12 +8,6 @@ export default function reducer(state = {}, action) {
             [action.serverId]: { title: action.title, id: action.serverId }
             }
         }
-        case ADD_SERVERS: {
-            return {
-                ...state,
-                ...action.servers
-            }
-        }
 
         default:
             return state;

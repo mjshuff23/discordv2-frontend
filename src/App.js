@@ -23,6 +23,7 @@ function App({ needLogin, loadToken }) {
   return (
     <BrowserRouter>
       <Switch>
+        <Route path='/test' component={Test} />
         <Route path ="/landing" component={LandingPage} />
         <ProtectedRoute
           path="/login"
