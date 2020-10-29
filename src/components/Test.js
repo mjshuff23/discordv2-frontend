@@ -8,10 +8,14 @@ function Test() {
     event.preventDefault();
     dispatch(logout())
   }
+
+
+
   return (
     <div>
       <h1> Test </h1>
       <button onClick={handleLogout}>Logout</button>
+
     </div>
   )
 }

@@ -22,8 +22,10 @@ export const login = (email, password) => async (dispatch) => {
   });
 
   if (response.ok) {
-    const { token } = await response.json();
+    const { token, user } = await response.json();
+    console.log(user.id)
     window.localStorage.setItem(TOKEN_KEY, token);
+    window.localStorage.setItem('userId', user.id)
     dispatch(setToken(token));
   }
 };
@@ -31,6 +33,7 @@ export const login = (email, password) => async (dispatch) => {
 export const logout = () => async (dispatch, getState) => {
 
   window.localStorage.removeItem(TOKEN_KEY);
+  window.localStorage.removeItem('userId');
   dispatch(removeToken)
   window.location.href = '/'
   // const {
@@ -57,7 +60,7 @@ export const register = (username, email, password) => async (dispatch) => {
 
     const { token, user} = await response.json();
     window.localStorage.setItem(TOKEN_KEY, token)
-    // window.localStorage.setItem('userId', user.id)
+    window.localStorage.setItem('userId', user.id)
     dispatch(setToken(token));
   }
 }
