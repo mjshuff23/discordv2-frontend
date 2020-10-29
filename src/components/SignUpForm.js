@@ -9,6 +9,7 @@ function SignUpForm() {
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [confirmPassword, setConfirmPassword] = useState('')
     const dispatch = useDispatch();
 
     const handleSubmit = (event) => {
@@ -26,6 +27,10 @@ function SignUpForm() {
 
     const updatePassword = (event) => {
         setPassword(event.target.value)
+    }
+
+    const updateConfirmPassword = (event) => {
+        setConfirmPassword(event.target.value)
     }
 
     if (token) {
@@ -52,6 +57,12 @@ function SignUpForm() {
                 placeholder="password"
                 value={password}
                 onChange={updatePassword}
+                />
+                <input
+                type="password"
+                placeholder="password"
+                value={confirmPassword}
+                onChange={updateConfirmPassword}
                 />
                 <button type="submit">Sign Up!</button>
             </form>

@@ -29,22 +29,25 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 export const logout = () => async (dispatch, getState) => {
-  const {
-    authentication: { token },
-  } = getState();
-  const response = await fetch(`${baseUrl}/session`, {
-    method: "delete",
-    headers: { Authorization: `Bearer ${token}` },
-  });
 
-  if (response.ok) {
-    window.localStorage.removeItem(TOKEN_KEY);
-    dispatch(removeToken());
-  }
+  window.localStorage.removeItem(TOKEN_KEY);
+  dispatch(removeToken)
+  window.location.href = '/'
+  // const {
+  //   authentication: { token },
+  // } = getState();
+  // const response = await fetch(`${baseUrl}/users/logout`, {
+  //   method: "delete",
+  //   headers: { Authorization: `Bearer ${token}` },
+  // });
+
+  // if (response.ok) {
+  //   window.localStorage.removeItem(TOKEN_KEY);
+  //   dispatch(removeToken());
+  // }
 };
 
 export const register = (username, email, password) => async (dispatch) => {
-  console.log('here');
   const response = await fetch(`http://localhost:8080/users`, {
     method: 'post',
     headers: { "Content-Type": "application/json" },
