@@ -8,6 +8,7 @@ function Test() {
   const dispatch = useDispatch();
   const [serverTitle, setServerTitle] = useState('');
 
+
   const handleLogout = (event) => {
     event.preventDefault();
     dispatch(logout())

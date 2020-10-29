@@ -1,13 +1,18 @@
-import { ADD_SERVER } from "../actions/server";
+import { ADD_SERVER, GET_SERVERS } from "../actions/server";
 
 export default function reducer(state = {}, action) {
     switch (action.type) {
         case ADD_SERVER: {
             return {
                 ...state,
-                title: action.title
+            [action.serverId]: { title: action.title, id: action.serverId }
             }
         }
+        // case GET_SERVERS: {
+        //     return {
+        //         ...state,
+        //     }
+        // }
 
         default:
             return state;
