@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:8080/api";
+const baseUrl = "http://localhost:8080";
 
 export const TOKEN_KEY = "discord/authentication/token";
 export const SET_TOKEN = "discord/authentication/SET_TOKEN";
@@ -15,8 +15,8 @@ export const loadToken = () => async (dispatch) => {
 };
 
 export const login = (email, password) => async (dispatch) => {
-  const response = await fetch(`${baseUrl}/session`, {
-    method: "put",
+  const response = await fetch(`${baseUrl}/users/login`, {
+    method: "post",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ email, password }),
   });

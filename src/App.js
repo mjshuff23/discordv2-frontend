@@ -1,12 +1,46 @@
-import React from 'react';
+import React, { useState, useEffect } from "react";
+import { useSelector, useDispatch } from "react-redux";
+import { BrowserRouter, Redirect, Switch } from "react-router-dom";
+import { loadToken } from "./store/actions/authentication";
+import { ProtectedRoute, PrivateRoute } from "./util/route-util";
+import LoginForm from './components/LoginForm';
+import Test from './components/Test';
 
-function App() {
+function App({ needLogin, loadToken }) {
+  const [loaded, setLoaded] = useState(false);
+
+  useEffect(() => {
+    setLoaded(true);
+    loadToken();
+  }, []);
+
+  if (!loaded) {
+    return null;
+  }
   return (
-    <>
-      <h1>Hello world!</h1>
-      {/* <LoginForm /> */}
-    </>
+    <BrowserRouter>
+      <Switch>
+        <ProtectedRoute
+          path="/login"
+          exact={true}
+          needLogin={needLogin}
+          component={LoginForm}
+        />
+        <PrivateRoute
+          path="/"
+          needLogin={needLogin}
+          component={Test}
+        />
+        <Redirect to="/" />
+      </Switch>
+    </BrowserRouter>
   );
 }
 
-export default App;
+const AppContainer = () => {
+  const needLogin = useSelector((state) => !state.authentication.token);
+  const dispatch = useDispatch();
+  return <App needLogin={needLogin} loadToken={() => dispatch(loadToken())} />;
+};
+
+export default AppContainer;
