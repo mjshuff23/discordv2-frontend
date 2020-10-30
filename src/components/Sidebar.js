@@ -19,7 +19,6 @@ function Sidebar() {
     const showChannels = (event) => {
         event.preventDefault();
         event.stopPropagation();
-        console.log(event.target.id);
         setShowChannel(!showChannel);
     }
 
