@@ -1,21 +1,22 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { getChannels } from '../store/actions/channel';
+import React, { /*useEffect*/ } from 'react';
+import { /*useDispatch, useSelector*/ } from 'react-redux';
+// import { getChannels } from '../store/actions/channel';
 
-function ChannelList({ id }) {
-  const dispatch = useDispatch();
+function ChannelList() {
+  // const dispatch = useDispatch();
 
-   useEffect(() => {
-        dispatch(getChannels(id));
-   }, [dispatch])
-  const channels = useSelector(state => Object.values(state.channel));
+  //  useEffect(() => {
+  //       dispatch(getChannels(id));
+  //  }, [dispatch])
+  // const channels = useSelector(state => Object.values(state.channel));
   return (
     <div>
-      <ul>
+      Test
+      {/* <ul>
         {channels.map(channel => (
           <li key={channel.id}>{channel.title}</li>
         ))}
-      </ul>
+      </ul> */}
     </div>
   )
 }
