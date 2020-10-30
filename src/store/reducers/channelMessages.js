@@ -1,4 +1,4 @@
-import { ADD_CHANNEL_MESSAGES } from "../actions/channelMessages";
+import { ADD_CHANNEL_MESSAGES, ADD_CHANNEL_MESSAGE } from "../actions/channelMessages";
 import merge from "lodash/merge";
 
 export default function reducer(state = {}, action) {
@@ -7,9 +7,11 @@ export default function reducer(state = {}, action) {
         case ADD_CHANNEL_MESSAGES: {
 
             const channelMessages = action.channelMessages.map((channelMessage) => ({ [channelMessage.id]: channelMessage}));
-            return merge({}, state, ...channelMessages)
+            return merge({}, ...channelMessages)
         }
-
+        case ADD_CHANNEL_MESSAGE: {
+            return merge({}, state, action.channelMessage)
+        }
         default:
             return state;
     }

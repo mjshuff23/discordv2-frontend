@@ -6,7 +6,7 @@ export default function reducer(state = {}, action) {
     switch (action.type) {
         case ADD_CHANNELS: {
             const channels = action.channels.map((channel) => ({ [channel.id]: channel}));
-            return merge({}, state, ...channels)
+            return merge({}, ...channels)
         }
 
         default:

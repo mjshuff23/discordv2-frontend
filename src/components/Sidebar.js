@@ -6,6 +6,7 @@ import { getServers } from '../store/actions/server';
 import ChannelList from './ChannelList';
 import './stylesheets/Sidebar.css'
 import { getChannels } from '../store/actions/channel';
+import Chat from './Chat';
 
 function Sidebar() {
 
@@ -43,7 +44,6 @@ function Sidebar() {
                         />
                     </Tooltip>)
             })}
-            { showChannel ? <ChannelList /> : null}
         </div>
     )
 }
