@@ -1,4 +1,4 @@
-import { Avatar } from '@material-ui/core';
+import { Avatar, Tooltip } from '@material-ui/core';
 import React, { useEffect } from 'react'
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
@@ -18,6 +18,8 @@ function Sidebar() {
 
     const showChannels = (event) => {
         event.preventDefault();
+        event.stopPropagation();
+        console.log(event.target.id);
         setShowChannel(!showChannel);
     }
 
@@ -25,15 +27,31 @@ function Sidebar() {
 
         return (
             <div className="sidebar">
-                {servers.map((server) => (
-                    <Avatar
-                        key={server.id}
-                        alt={server.title}
-                        onClick={showChannels}
-                        className='sidebar__serverBtn'
-                        src='../../public/image1.jpg'
-                    />
-                ))}
+                {servers.map((server, index) => {
+                    let imgurl;
+                    const imgProps = {
+                        id: server.id,
+                    }
+                    if (index === 2) {
+                        imgurl = `http://www.mikeshuff.com/images/server${index + 1}.png`;
+
+                    } else {
+                        imgurl = `http://www.mikeshuff.com/images/server${index + 1}.jpg`;
+                    }
+                    return (
+                        <Tooltip key={server.id} title={server.title} placement='right'>
+                            <Avatar
+                                key={server.id}
+                                id={server.id}
+                                alt={server.title}
+                                onClick={showChannels}
+                                component='span'
+                                className='sidebar__serverBtn'
+                                imgProps={imgProps}
+                                src={imgurl}
+                            />
+                        </Tooltip>);
+                })}
                 {showChannel ? <ChannelList /> : null}
             </div>
         )
