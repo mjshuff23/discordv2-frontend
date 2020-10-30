@@ -5,22 +5,20 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getServers } from '../store/actions/server';
 import ChannelList from './ChannelList';
 import './stylesheets/Sidebar.css'
+import { getChannels } from '../store/actions/channel';
 
 function Sidebar() {
 
     const [showChannel, setShowChannel] = useState(false);
-    // const [currentServer, setCurrentServer] = useState();
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getServers());
     }, [dispatch])
 
-    const showChannels = async (event) => {
-        event.preventDefault();
-        event.stopPropagation();
+    const showChannels = async (serverId) => {
         setShowChannel(!showChannel);
-        console.log(event.target.id);
+        dispatch(getChannels(serverId));
     }
 
     const servers = useSelector(state => Object.values(state.server));
@@ -38,7 +36,7 @@ function Sidebar() {
                             key={server.id}
                             id={server.id}
                             alt={server.title}
-                            onClick={showChannels}
+                            onClick={() => showChannels(server.id)}
                             className='sidebar__serverBtn'
                             imgProps={imgProps}
                             src={imgurl}

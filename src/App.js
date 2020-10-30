@@ -7,6 +7,8 @@ import LoginForm from './components/LoginForm';
 import Test from './components/Test';
 import LandingPage from "./components/LandingPage";
 import Sidebar from "./components/Sidebar";
+import MainPage from "./components/MainPage";
+import './components/stylesheets/App.css';
 
 function App({ needLogin, loadToken }) {
   const [loaded, setLoaded] = useState(false);
@@ -34,7 +36,7 @@ function App({ needLogin, loadToken }) {
           path="/"
           exact={true}
           needLogin={needLogin}
-          component={Sidebar}
+          component={MainPage}
         />
 
         <Redirect to="/" />
