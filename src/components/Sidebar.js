@@ -33,6 +33,7 @@ function Sidebar() {
                 if (index === 2) { imgurl = `http://www.mikeshuff.com/images/server${index + 1}.png`; }
                 else { imgurl = `http://www.mikeshuff.com/images/server${index + 1}.jpg`; }
                 return (
+                  <>
                     <Tooltip key={server.id} title={server.title} placement='right'>
                         <Avatar
                             key={server.id}
@@ -44,9 +45,11 @@ function Sidebar() {
                             imgProps={imgProps}
                             src={imgurl}
                         />
-                    </Tooltip>);
+                    </Tooltip>
+                        { showChannel ? <ChannelList channels={server.channels} id={server.id} /> : null}
+                  </>
+                );
             })}
-            {showChannel ? <ChannelList /> : null}
         </div>
     )
 }

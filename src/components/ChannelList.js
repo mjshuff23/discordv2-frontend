@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { getChannels } from '../store/actions/channel';
 
-function ChannelList() {
+function ChannelList({ id }) {
+  const dispatch = useDispatch();
+
+   useEffect(() => {
+        dispatch(getChannels(id));
+   }, [dispatch])
+  const channels = useSelector(state => Object.values(state.channel));
   return (
     <div>
-      <h1>YO</h1>
-{/* dispatch(getChannels(server.id)) */}
+      <ul>
+        {channels.map(channel => (
+          <li key={channel.id}>{channel.title}</li>
+        ))}
+      </ul>
     </div>
   )
 }
