@@ -10,7 +10,6 @@ export default function reducer(state = {}, action) {
             }
         }
         case ADD_SERVERS: {
-            console.log(action)
             const servers = action.servers.map((server) => ({ [server.id]: server}));
             return merge({}, state, ...servers)
         }

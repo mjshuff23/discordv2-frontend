@@ -40,7 +40,7 @@ function SignUpForm() {
 
     return (
         <div className="signUpForm">
-            <h2>Sign Up here</h2>
+            <h2 className='signUpForm__header'>Sign Up</h2>
             <form onSubmit={handleSubmit}>
                 <input
                 className="signUpForm__input"
@@ -72,7 +72,7 @@ function SignUpForm() {
                 />
                 <button className="signUpForm__button" type="submit">Sign Up!</button>
             </form>
-            <NavLink to='/login'>Already have an account?</NavLink>
+            <NavLink to='/login' className="signUpForm__loginLink">Already have an account?</NavLink>
 
         </div>
     )

@@ -5,7 +5,7 @@ import { login } from "../store/actions/authentication";
 import './stylesheets/LoginForm.css'
 
 const LoginPanel = (props) => {
-  const [email, setEmail] = useState("s@gmail.com");
+  const [email, setEmail] = useState("demo@test.com");
   const [password, setPassword] = useState("password");
   const dispatch = useDispatch();
 
@@ -24,6 +24,7 @@ const LoginPanel = (props) => {
 
   return (
     <div className="loginForm">
+      <h2 className='loginForm__header'>Login</h2>
       <form onSubmit={handleSubmit}>
         <input
           className="loginForm__input"
@@ -41,7 +42,7 @@ const LoginPanel = (props) => {
         />
         <button className="loginForm__button" type="submit">Login</button>
       </form>
-      <NavLink to="/landing">Need an account? Sign up here!</NavLink>
+      <NavLink to="/landing" className="loginForm__signupLink">Need an account? Sign up here!</NavLink>
     </div>
   );
 };

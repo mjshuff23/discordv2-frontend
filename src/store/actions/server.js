@@ -21,7 +21,6 @@ export const createServer = (title) => async (dispatch) => {
 };
 
 export const getServers = () => async (dispatch) => {
-    console.log('here');
     const userId = window.localStorage.getItem('userId')
     const response = await fetch(`${baseUrl}/servers/${userId}`)
 
