@@ -5,7 +5,7 @@ import EditLocationRoundedIcon from '@material-ui/icons/EditLocationRounded';
 import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 import HelpRoundedIcon  from '@material-ui/icons/HelpRounded';
-import SendRoundedIcon from '@material-ui/icons/SendRounded';
+
 
 function ChatHeader() {
     return (
@@ -16,16 +16,12 @@ function ChatHeader() {
             </div>
 
             <div className="chatHeader__right">
-                <NotificationsIcon />
-                <EditLocationRoundedIcon />
                 <PeopleAltRoundedIcon />
 
                 <div className="chatHeader__search">
                     <input placeholder="Search"  />
                     <SearchRoundedIcon />
                 </div>
-                <SendRoundedIcon />
-                <HelpRoundedIcon />
             </div>
 
         </div>

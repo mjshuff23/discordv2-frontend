@@ -7,10 +7,10 @@ function Message() {
         <div className="message">
             <Avatar />
             <div className="message__info">
-                <h4>Eric
-                    <span className="message__timestamp">this is a timestamp</span>
+                <h4>Michael
+                    <span className="message__timestamp">3:09 PM(EST), 10/30/2020</span>
                 </h4>
-                <p>this is a message</p>
+                <p>Heyoo</p>
             </div>
 
         </div>

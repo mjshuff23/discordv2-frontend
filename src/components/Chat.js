@@ -6,6 +6,7 @@ import CardGiftcardIcon from '@material-ui/icons/CardGiftcard';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import GifIcon  from '@material-ui/icons/Gif';
 import Message from './Message';
+import SendRoundedIcon from '@material-ui/icons/SendRounded';
 
 function Chat() {
     return (
@@ -24,10 +25,8 @@ function Chat() {
                     <input placeholder="message" />
                     <button className="chat__inputButton" type="submit">Send</button>
                 </form>
-
-                <div className="chat__inputIcons">
-                    <CardGiftcardIcon fontSize="large" />
-                    <GifIcon fontSize="large" />
+            <div className="chat__inputIcons">
+                    <SendRoundedIcon />
                     <EmojiEmotionsIcon fontSize="large" />
                 </div>
             </div>
