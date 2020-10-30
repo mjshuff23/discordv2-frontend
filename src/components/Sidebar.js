@@ -7,6 +7,7 @@ import ChannelList from './ChannelList';
 import './stylesheets/Sidebar.css'
 
 function Sidebar() {
+
     const [showChannel, setShowChannel] = useState(false);
     // const [currentServer, setCurrentServer] = useState();
     const dispatch = useDispatch();
@@ -22,7 +23,7 @@ function Sidebar() {
         console.log(event.target.id);
     }
 
-    const servers = useSelector((state) => Object.values(state.server));
+    const servers = useSelector(state => Object.values(state.server));
 
     return (
         <div className="sidebar">
