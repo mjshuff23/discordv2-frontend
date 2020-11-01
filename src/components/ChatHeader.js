@@ -16,7 +16,6 @@ function ChatHeader({ title }) {
             </div>
 
             <div className="chatHeader__right">
-                <PeopleAltRoundedIcon />
 
                 <div className="chatHeader__search">
                     <input placeholder="Search"  />

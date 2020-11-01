@@ -6,8 +6,18 @@ import './stylesheets/Message.css'
 import { Avatar } from '@material-ui/core'
 
 function Message({ messageInfo }) {
+    const messageElement = useRef(null);
+
+    useEffect(() => {
+        if (messageElement.current) {
+            messageElement.current.scrollIntoView({
+                block: 'nearest'
+            });
+        }
+    }, []);
+
     return (
-        <div className="message">
+        <div ref={messageElement} className="message">
             <Avatar />
             <div className="message__info">
                 <h4>{messageInfo.userId}
@@ -19,5 +29,6 @@ function Message({ messageInfo }) {
         </div>
     )
 }
+
 
 export default Message;

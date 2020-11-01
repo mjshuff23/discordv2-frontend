@@ -14,13 +14,6 @@ function Chat({ onSend }) {
     let currentChannel = useSelector(state => state.channel.currentChannel);
     const userId = window.localStorage.getItem('userId')
     const messages = useSelector(state => state.channelMessages[currentChannel]);
-    const messageElement = useRef(null);
-
-    useEffect(() => {
-        if (messageElement.current) {
-            messageElement.current.scrollIntoView();
-        }
-    });
 
     // Fetch the list of messages for a channel
     useEffect(() => {
@@ -37,7 +30,7 @@ function Chat({ onSend }) {
                 console.error(e);
             }
         })();
-    }, [currentChannel, dispatch]);
+    }, [currentChannel, dispatch, onSend]);
 
     // If there's no current Channel, just render nothing
     if (!currentChannel) {
@@ -58,7 +51,6 @@ function Chat({ onSend }) {
                     return <Message key={channelMessage.id} messageInfo={channelMessage} />
                 }) : null}
             </div>
-
             <div className="chat__input">
                 <AddCirleIcon fontSize="large" />
                 <form onSubmit={(e) => {
@@ -79,4 +71,4 @@ function Chat({ onSend }) {
     )
 }
 
-export default Chat
+export default Chat;
