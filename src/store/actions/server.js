@@ -1,9 +1,12 @@
 const baseUrl = "http://localhost:8080";
 export const ADD_SERVER = 'discord/server/ADD_SERVER'
 export const ADD_SERVERS = 'discord/server/ADD_SERVERS'
+export const LOAD_SERVER = "discord/servers/LOAD";
+export const SET_CURRENT_SERVER = "discord/servers/SET_CURRENT"
 
+export const loadServer = (list) => ({ type: LOAD_SERVER, list });
 export const addServer = (server) => ({type: ADD_SERVER, server });
-export const addServers = (servers) => ({ type: ADD_SERVERS, servers})
+// export const addServers = (servers) => ({ type: ADD_SERVERS, servers})
 
 export const createServer = (title) => async (dispatch) => {
     console.log(title)
@@ -26,6 +29,6 @@ export const getServers = () => async (dispatch) => {
 
       if (response.ok) {
         const { servers } = await response.json();
-          dispatch(addServers(servers));
-         }
+          dispatch(loadServer(servers));
+      }
 }

@@ -1,5 +1,6 @@
 import { Avatar, Tooltip } from '@material-ui/core';
 import React, { useEffect } from 'react'
+import AddIcon from '@material-ui/icons/Add';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { getServers } from '../store/actions/server';
@@ -12,10 +13,6 @@ function Sidebar() {
 
     const [showChannel, setShowChannel] = useState(false);
     const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(getServers());
-    }, [dispatch])
 
     const showChannels = async (serverId) => {
         setShowChannel(!showChannel);
@@ -44,6 +41,9 @@ function Sidebar() {
                         />
                     </Tooltip>)
             })}
+            <Avatar className="sidebar__addButton">
+                <AddIcon />
+            </Avatar>
         </div>
     )
 }

@@ -14,10 +14,23 @@
   );
 }
 
-.MuiAvatar-root.sidebar__serverBtn:hover {
+.MuiAvatar-root.sidebar__serverBtn:hover,
+.MuiAvatar-root.sidebar__addButton:hover {
   background: radial-gradient(
     circle,
     rgba(6, 31, 37, 1) 20%,
     rgb(119, 145, 238) 100%
+  );
+}
+
+.MuiAvatar-root.sidebar__addButton {
+  height: 50px;
+  width: 50px;
+  cursor: pointer;
+  padding: 5px;
+  background: radial-gradient(
+    circle,
+    rgba(6, 31, 37, 0.8) 40%,
+    rgba(114, 137, 218, 0.8) 100%
   );
 }

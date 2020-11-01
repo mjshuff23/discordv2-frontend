@@ -4,13 +4,11 @@ import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
 import { loadToken } from "./store/actions/authentication";
 import { ProtectedRoute, PrivateRoute } from "./util/route-util";
 import LoginForm from './components/LoginForm';
-import Test from './components/Test';
 import LandingPage from "./components/LandingPage";
-import Sidebar from "./components/Sidebar";
 import MainPage from "./components/MainPage";
 import './components/stylesheets/App.css';
 
-function App({ needLogin, loadToken }) {
+function App({ socket, needLogin, loadToken }) {
   const [loaded, setLoaded] = useState(false);
 
   useEffect(() => {
@@ -24,7 +22,6 @@ function App({ needLogin, loadToken }) {
   return (
     <BrowserRouter>
       <Switch>
-        <Route path='/test' component={Test} />
         <Route path ="/landing" component={LandingPage} />
         <ProtectedRoute
           path="/login"
@@ -36,7 +33,7 @@ function App({ needLogin, loadToken }) {
           path="/"
           exact={true}
           needLogin={needLogin}
-          component={MainPage}
+          component={() => <MainPage socket={socket} />}
         />
 
         <Redirect to="/" />
@@ -46,10 +43,10 @@ function App({ needLogin, loadToken }) {
   );
 }
 
-const AppContainer = () => {
+const AppContainer = ({ socket }) => {
   const needLogin = useSelector((state) => !state.authentication.token);
   const dispatch = useDispatch();
-  return <App needLogin={needLogin} loadToken={() => dispatch(loadToken())} />;
+  return <App socket={socket} needLogin={needLogin} loadToken={() => dispatch(loadToken())} />;
 };
 
 export default AppContainer;

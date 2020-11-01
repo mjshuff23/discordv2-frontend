@@ -1,0 +1,30 @@
+.channelList__div {
+  display: flex;
+  height: 5%;
+  opacity: 93%;
+  width: 100%;
+  color: white;
+  justify-content: right;
+  margin-top: 35px;
+}
+
+.channelList__hash {
+  font-size: 30px;
+  font-weight: bold;
+  color: #636363;
+}
+
+.border-gradient {
+  padding: 4px;
+  background: #313232;
+  background: -moz-linear-gradient(-45deg, #313232 50%, #4f4f4f 50%);
+  background: -webkit-linear-gradient(-45deg, #313232 50%, #4f4f4f 50%);
+  background: linear-gradient(135deg, #313232 0%, #4f4f4f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='##313232', endColorstr='#4f4f4f',GradientType=1 );
+  opacity: 75%;
+}
+.border-gradient > .margin-fix {
+  background-color: white;
+  padding: 1px;
+  margin: -1px;
+}

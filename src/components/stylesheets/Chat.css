@@ -2,7 +2,6 @@
   display: flex;
   flex-direction: column;
   flex: 1;
-  border-radius: 20px;
   background-color: #363a3f;
   opacity: 93%;
   height: 100vh;
@@ -27,7 +26,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px;
+  padding: 5px;
   border-radius: 5px;
   margin: 20px;
   border-top: 1px solid gray;
@@ -60,4 +59,23 @@
 
 .chat__inputIcons > .MuiSvgIcon-root {
   padding: 5px 10px;
+}
+
+.border-gradient {
+  padding: 4px;
+  background: #313232;
+  background: -moz-linear-gradient(-45deg, #313232 50%, #4f4f4f 50%);
+  background: -webkit-linear-gradient(-45deg, #313232 50%, #4f4f4f 50%);
+  background: linear-gradient(135deg, #313232 0%, #4f4f4f 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='##313232', endColorstr='#4f4f4f',GradientType=1 );
+  opacity: 75%;
+}
+.border-gradient > .margin-fix {
+  background-color: white;
+  padding: 1px;
+  margin: -1px;
+}
+
+.MuiSvgIcon-root {
+  padding: 5px;
 }
