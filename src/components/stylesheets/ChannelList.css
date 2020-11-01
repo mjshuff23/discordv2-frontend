@@ -6,12 +6,19 @@
   color: white;
   justify-content: right;
   margin-top: 35px;
+  cursor: pointer;
 }
 
 .channelList__hash {
   font-size: 30px;
   font-weight: bold;
-  color: #636363;
+  color: #c1c1c1;
+  padding: 0px 10px 0px;
+}
+
+.channelList__channel {
+  padding-top: 4px;
+  font-size: 1.2em;
 }
 
 .border-gradient {

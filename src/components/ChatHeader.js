@@ -1,10 +1,6 @@
 import React from 'react'
 import './stylesheets/ChatHeader.css'
-import NotificationsIcon from '@material-ui/icons/Notifications';
-import EditLocationRoundedIcon from '@material-ui/icons/EditLocationRounded';
-import PeopleAltRoundedIcon from '@material-ui/icons/PeopleAltRounded';
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
-import HelpRoundedIcon  from '@material-ui/icons/HelpRounded';
 
 
 function ChatHeader({ title }) {

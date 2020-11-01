@@ -14,18 +14,3 @@ export const getChannelMessages = (channelId) => async (dispatch) => {
         dispatch(addChannelMessages(channelMessages, channelId));
     }
 }
-
-export const postChannelMessage = (channelId, body, userId) => async (dispatch) => {
-    const response = await fetch(`${baseUrl}/channels/${channelId}/messages/add`, {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ userId, body}),
-      });
-
-
-    if (response.ok) {
-
-        const { channelMessage } = await response.json();
-        dispatch(addChannelMessage(channelMessage, channelId));
-    }
-}

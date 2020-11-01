@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect } from 'react';
 import './stylesheets/Chat.css'
 import ChatHeader from './ChatHeader';
 import AddCirleIcon from '@material-ui/icons/AddCircle';
@@ -6,14 +6,14 @@ import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import Message from './Message';
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
 import { useDispatch, useSelector } from 'react-redux';
-import { postChannelMessage, getChannelMessages } from '../store/actions/channelMessages';
+import { getChannelMessages } from '../store/actions/channelMessages';
 
-function Chat({ onSend }) {
+function Chat({ onSend, socket }) {
     const dispatch = useDispatch();
     const channelMessages = useSelector(state => Object.values(state.channelMessages));
     let currentChannel = useSelector(state => state.channel.currentChannel);
-    const userId = window.localStorage.getItem('userId')
-    const messages = useSelector(state => state.channelMessages[currentChannel]);
+    // const userId = window.localStorage.getItem('userId')
+    // const messages = useSelector(state => state.channelMessages[currentChannel]);
 
     // Fetch the list of messages for a channel
     useEffect(() => {
@@ -25,21 +25,19 @@ function Chat({ onSend }) {
 
         (async () => {
             try {
-                dispatch(getChannelMessages(currentChannel.id));
+                await dispatch(getChannelMessages(currentChannel.id));
             } catch (e) {
                 console.error(e);
             }
         })();
-    }, [currentChannel, dispatch, onSend]);
+    }, [currentChannel.id]);
 
-    // If there's no current Channel, just render nothing
     if (!currentChannel) {
         return null;
     }
 
-    const handleSubmit = async (channelId, message, userId) => {
-        console.log(channelId, message, userId);
-        onSend(message);
+    function handleSubmit(e) {
+        onSend(e);
         // dispatch(postChannelMessage(channelId, message, userId))
     };
 
@@ -47,15 +45,15 @@ function Chat({ onSend }) {
         <div className="chat border-gradient margin-fix">
             <ChatHeader title={currentChannel.title} />
             <div className="chat__messages">
-                {channelMessages ? channelMessages.map((channelMessage) => {
-                    return <Message key={channelMessage.id} messageInfo={channelMessage} />
+                {channelMessages ? channelMessages.map((channelMessage, idx) => {
+                    return <Message key={idx} messageInfo={channelMessage} />
                 }) : null}
             </div>
             <div className="chat__input">
                 <AddCirleIcon fontSize="large" />
                 <form onSubmit={(e) => {
                     e.preventDefault()
-                    handleSubmit(currentChannel.id, e.target[0].value, userId)
+                    handleSubmit(e.target[0].value);
                     e.target[0].value = '';
                 }}>
                     <input placeholder="message" />

@@ -1,5 +1,4 @@
 import { ADD_CHANNEL_MESSAGES, ADD_CHANNEL_MESSAGE } from "../actions/channelMessages";
-import merge from "lodash/merge";
 
 
 export default function reducer(state = [], action) {

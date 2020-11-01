@@ -8,8 +8,6 @@
   width: 8%;
   flex-direction: column;
   align-items: center;
-  margin-top: 20px;
-  margin-bottom: 20px;
   overflow: scroll;
   height: 100vh;
 }
@@ -26,5 +24,5 @@
   flex-direction: column;
   background-color: #2a2d31;
   height: 100vh;
-  padding: 4px 5px;
+  padding: 0px 5px;
 }

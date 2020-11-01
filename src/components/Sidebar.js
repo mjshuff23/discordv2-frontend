@@ -1,16 +1,15 @@
 import { Avatar, Tooltip } from '@material-ui/core';
-import React, { useEffect } from 'react'
+import { Popover } from '@material-ui/core';
+import React  from 'react'
 import AddIcon from '@material-ui/icons/Add';
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { getServers } from '../store/actions/server';
-import ChannelList from './ChannelList';
 import './stylesheets/Sidebar.css'
 import { getChannels } from '../store/actions/channel';
-import Chat from './Chat';
+import AddServer from './AddServer';
 
 function Sidebar() {
-
+    const [showServer, setShowServer] = useState(false);
     const [showChannel, setShowChannel] = useState(false);
     const dispatch = useDispatch();
 
@@ -19,10 +18,12 @@ function Sidebar() {
         dispatch(getChannels(serverId));
     }
 
+    const showServerForm = () => setShowServer(!showServer);
+
     const servers = useSelector(state => Object.values(state.server));
 
     return (
-        <div className="sidebar">
+        <div className="sidebar gradient-2">
             {servers.map((server, index) => {
                 let imgurl;
                 const imgProps = { id: server.id, }
@@ -41,9 +42,24 @@ function Sidebar() {
                         />
                     </Tooltip>)
             })}
-            <Avatar className="sidebar__addButton">
+            <Avatar onClick={showServerForm} className="sidebar__addButton" >
                 <AddIcon />
             </Avatar>
+            <Popover
+                anchorOrigin={{
+                    vertical: 'center',
+                    horizontal: 'center',
+                }}
+                transformOrigin={{
+                    vertical: 'center',
+                    horizontal: 'center',
+                }}
+                open={showServer}
+                onClose={() => setShowServer(!showServer)}
+
+            >
+                <AddServer />
+            </Popover>
         </div>
     )
 }
