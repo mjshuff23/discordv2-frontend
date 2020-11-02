@@ -54,7 +54,7 @@ function MainPage({ socket }) {
     // Listen for connections to the currentChannel
     // And add the incoming messages to Redux.
     socket.on(currentChannel.id, ({message, channel}) => {
-      console.log(`Received new message for ${channel.title}[${channel.id}]: `, message);
+      console.log(`Received new message for ${channel.title}[${channel.id}]: `, message.body);
       // If the current channel doesn't match the
       // channel the message belongs to, then
       // don't add the message because it shouldn't

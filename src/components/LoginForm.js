@@ -40,9 +40,9 @@ const LoginPanel = (props) => {
           value={password}
           onChange={updatePassword}
         />
-        <button className="loginForm__button" type="submit">Login</button>
+        <button className="loginForm__button" type="submit">Login to Dischord</button>
       </form>
-      <NavLink to="/landing" className="loginForm__signupLink">Need an account? Sign up here!</NavLink>
+      <NavLink to="/landing" className="loginForm__signupLink">No Account? Sign Up Here!</NavLink>
     </div>
   );
 };

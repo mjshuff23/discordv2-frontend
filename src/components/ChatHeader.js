@@ -14,8 +14,6 @@ function ChatHeader({ title }) {
             <div className="chatHeader__right">
 
                 <div className="chatHeader__search">
-                    <input placeholder="Search"  />
-                    <SearchRoundedIcon />
                 </div>
             </div>
 

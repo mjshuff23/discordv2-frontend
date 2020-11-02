@@ -59,8 +59,6 @@ function Chat({ onSend, socket }) {
                     <button className="chat__inputButton" type="submit">Send</button>
                 </form>
                 <div className="chat__inputIcons">
-                    <SendRoundedIcon />
-                    <EmojiEmotionsIcon fontSize="large" />
                 </div>
             </div>
 
