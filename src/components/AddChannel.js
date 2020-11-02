@@ -20,7 +20,7 @@ function AddChannel({ socket }) {
   const handleChannelCreate = (event) => {
     console.log('handleChannelCreate')
     if (!currentServerId) {
-      window.alert('sorry!');
+      window.alert('Please pick a valid server to create a channel for!');
     }
     event.preventDefault();
     dispatch(createChannel(channelTitle, currentServerId, socket, channelTopic))
