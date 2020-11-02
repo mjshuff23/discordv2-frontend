@@ -3,12 +3,12 @@ import './stylesheets/ChatHeader.css'
 import SearchRoundedIcon from '@material-ui/icons/SearchRounded';
 
 
-function ChatHeader({ title }) {
+function ChatHeader({ title, topic, channelId }) {
     return (
         <div className="chatHeader">
 
             <div className="chatHeader__left">
-                <h3><span className="chatHeader__hash">#</span>{title}</h3>
+                <h3><span className="chatHeader__hash">#</span>{title}-{channelId}</h3>
             </div>
 
             <div className="chatHeader__right">
