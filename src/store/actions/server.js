@@ -6,6 +6,7 @@ export const SET_CURRENT_SERVER = 'discord/servers/SET_CURRENT'
 
 export const loadServer = (list) => ({ type: LOAD_SERVER, list })
 export const addServer = (server) => ({ type: ADD_SERVER, server })
+export const setCurrentServer = (serverId) => ({ type: SET_CURRENT_SERVER, serverId })
 // export const addServers = (servers) => ({ type: ADD_SERVERS, servers})
 
 export const createServer = (title) => async (dispatch) => {

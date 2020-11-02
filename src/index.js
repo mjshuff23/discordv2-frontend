@@ -16,10 +16,10 @@ socket.on('error', (error) => {
 const store = configureStore();
 
 ReactDOM.render(
-  <React.StrictMode>
+  // <React.StrictMode>
     <Provider store={store}>
       <AppContainer socket={socket}/>
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
+  // </React.StrictMode>,
   document.getElementById('root')
 );

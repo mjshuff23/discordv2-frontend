@@ -11,6 +11,7 @@ import './stylesheets/MainPage.css'
 function MainPage({ socket }) {
   const userId = window.localStorage.getItem('userId');
 
+
   const channels = useSelector(state => Object.values(state.channel));
   const currentChannel = useSelector(state => state.channel.currentChannel);
   const joinedChannels = useSelector(state => state.channel.joinedChannels);
@@ -81,7 +82,7 @@ function MainPage({ socket }) {
       ) :
         <>
           <Sidebar />
-          <ChannelList serverId={serverId} />
+          <ChannelList socket={socket} serverId={serverId} />
           <Chat socket={socket} onSend={onSend}/>
         </>
       }

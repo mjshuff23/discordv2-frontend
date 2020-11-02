@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import './stylesheets/Sidebar.css'
 import { getChannels } from '../store/actions/channel';
 import AddServer from './AddServer';
+import { setCurrentServer } from '../store/actions/server';
 
 function Sidebar() {
     const [showServer, setShowServer] = useState(false);
@@ -16,17 +17,19 @@ function Sidebar() {
     const showChannels = async (serverId) => {
         setShowChannel(!showChannel);
         dispatch(getChannels(serverId));
+        dispatch(setCurrentServer(serverId));
     }
 
     const showServerForm = () => setShowServer(!showServer);
 
-    const servers = useSelector(state => Object.values(state.server));
+    const servers = useSelector(state => Object.values(state.server.servers));
 
+    if (!servers) return;
     return (
         <div className="sidebar gradient-2">
             {servers.map((server, index) => {
+                if (!server) return;
                 let imgurl;
-                const imgProps = { id: server.id, }
                 if (index === 2) { imgurl = `http://www.mikeshuff.com/images/server${index + 1}.png`; }
                 else { imgurl = `http://www.mikeshuff.com/images/server${index + 1}.jpg`; }
                 return (
@@ -35,9 +38,14 @@ function Sidebar() {
                             key={server.id}
                             id={server.id}
                             alt={server.title}
-                            onClick={() => showChannels(server.id)}
+                            onClick={() => {
+                                if (!server.id) {
+                                    return;
+                                } else {
+                                    showChannels(server.id)
+                                }
+                            }}
                             className='sidebar__serverBtn'
-                            imgProps={imgProps}
                             src={imgurl}
                         />
                     </Tooltip>)

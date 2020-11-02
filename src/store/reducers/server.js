@@ -1,12 +1,20 @@
 import { LOAD_SERVER, ADD_SERVER, SET_CURRENT_SERVER } from "../actions/server";
 // import merge from "lodash/merge";
 
-export default function reducer(state = {}, action) {
+const initialState = {
+    servers: {},
+    currentServer: '',
+}
+
+export default function reducer(state = initialState, action) {
     Object.freeze(state);
     switch (action.type) {
         case ADD_SERVER: {
             return {
-                ...state, servers: { [action.server.id]: action.server, }
+                ...state, servers: {
+                    ...state.servers,
+                    [action.server.id]: action.server,
+                }
             }
         }
         // case ADD_SERVERS: {
@@ -15,7 +23,7 @@ export default function reducer(state = {}, action) {
         // }
 
         case LOAD_SERVER: {
-            return { ...state, ...action.list };
+            return { servers: { ...action.list } };
         }
 
         case SET_CURRENT_SERVER: {
