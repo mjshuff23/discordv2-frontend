@@ -16,7 +16,7 @@ function Message({ messageInfo }) {
 
     return (
         <div ref={messageElement} className="message">
-            <Avatar />
+            <Avatar className="messageAvatar" />
             <div className="message__info">
                 <h4>{messageInfo.userId}
                     <span className="message__timestamp">{messageInfo.createdAt}</span>

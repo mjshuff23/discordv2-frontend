@@ -160,3 +160,7 @@
 .MuiSvgIcon-root {
   padding: 5px;
 }
+.MuiAvatar-colorDefault {
+  color: #ffffff;
+  background-color: rgba(6, 31, 37, 0.8);
+}
