@@ -34,7 +34,6 @@ export const createChannel = (title, serverId, socket, topic) => async (dispatch
 
     if (response.ok) {
         const channel = await response.json();
-        console.log(channel);
         dispatch(addChannel(channel));
         socket.emit('reloadChannels');
     }

@@ -18,7 +18,6 @@ function AddChannel({ socket }) {
   // }
 
   const handleChannelCreate = (event) => {
-    console.log('handleChannelCreate')
     if (!currentServerId) {
       window.alert('Please pick a valid server to create a channel for!');
     }

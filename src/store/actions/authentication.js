@@ -17,7 +17,6 @@ export const loadToken = () => async (dispatch) => {
     const response = await fetch(`${baseUrl}/users/${userId}`);
     if (response.ok) {
       const { username } = await response.json();
-      console.log(username);
       dispatch(addUser(username));
     }
 
