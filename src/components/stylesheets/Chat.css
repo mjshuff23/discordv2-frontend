@@ -164,3 +164,11 @@
   color: #ffffff;
   background-color: rgba(6, 31, 37, 0.8);
 }
+
+.chat__topic {
+  display: flex;
+  justify-content: center;
+  font-size: 1.5em;
+  color: white;
+  opacity: 100%;
+}

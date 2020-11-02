@@ -44,6 +44,7 @@ function Chat({ onSend, socket }) {
         <div className="chat border-gradient margin-fix">
             <ChatHeader title={currentChannel.title} />
             <div className="chat__messages">
+                <div className="chat__topic">{currentChannel.topic}</div>
                 {channelMessages ? channelMessages.map((channelMessage, idx) => {
                     return <Message key={idx} messageInfo={channelMessage} />
                 }) : null}

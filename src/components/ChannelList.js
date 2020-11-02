@@ -27,7 +27,7 @@ function ChannelList({ socket, serverId }) {
   const showChannelForm = () => setShowChannel(!showChannel);
   return (
     <div className="channelList border-gradient margin-fix">
-      <Avatar onClick={showChannelForm} className="sidebar__addButton" >
+      <Avatar onClick={showChannelForm} className="channelList__addButton" >
         <AddIcon />
       </Avatar>
       <Popover
@@ -44,6 +44,7 @@ function ChannelList({ socket, serverId }) {
       >
         <AddChannel socket={socket} />
       </Popover>
+
       {channelArray.map((channel, idx) => {
         return (
           <div key={Math.random() * 1000}>
