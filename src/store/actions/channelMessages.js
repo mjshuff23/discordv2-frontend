@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:8080";
+import { baseUrl } from "../../config"
 export const ADD_CHANNEL_MESSAGES= "discord/server/ADD_CHANNEL_MESSAGES"
 export const ADD_CHANNEL_MESSAGE = "discord/server/ADD_CHANNEL_MESSAGE"
 

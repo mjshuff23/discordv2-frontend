@@ -2,6 +2,7 @@
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
+  color: white;
   align-items: center;
   height: 400px;
   padding: 20px 50px;

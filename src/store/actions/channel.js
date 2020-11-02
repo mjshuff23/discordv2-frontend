@@ -1,4 +1,4 @@
-const baseUrl = "http://localhost:8080";
+import { baseUrl } from "../../config";
 export const ADD_CHANNELS = "discord/server/ADD_CHANNELS";
 export const ADD_CHANNEL = "discord/server/ADD_CHANNEL";
 export const SET_CURRENT_CHANNEL = "SET_CURRENT_CHANNEL";

@@ -1,5 +1,4 @@
-const baseUrl = "http://localhost:8080";
-
+import { baseUrl } from "../../config";
 export const TOKEN_KEY = "discord/authentication/token";
 export const SET_TOKEN = "discord/authentication/SET_TOKEN";
 export const REMOVE_TOKEN = "discord/authentication/REMOVE_TOKEN";
@@ -59,7 +58,7 @@ export const logout = () => async (dispatch, getState) => {
 };
 
 export const register = (username, email, password) => async (dispatch) => {
-  const response = await fetch(`http://localhost:8080/users`, {
+  const response = await fetch(`${baseUrl}/users`, {
     method: 'post',
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ username, email, password })

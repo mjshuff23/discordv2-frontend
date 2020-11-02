@@ -28,7 +28,7 @@ return (
     <div className="serverForm">
       <h1>Create A Server</h1>
       <form onSubmit={handleServerCreate}>
-        <input onChange={updateServerTitle} value={serverTitle} type="text"/>
+        <input onChange={updateServerTitle} value={serverTitle}  placeholder="Server Title" type="text"/>
         <button type="submit">Create Server</button>
       </form>
 

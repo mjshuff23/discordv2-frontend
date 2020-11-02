@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:8080'
+import { baseUrl } from "../../config"
 export const ADD_SERVER = 'discord/server/ADD_SERVER'
 export const ADD_SERVERS = 'discord/server/ADD_SERVERS'
 export const LOAD_SERVER = 'discord/servers/LOAD'

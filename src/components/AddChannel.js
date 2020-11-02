@@ -36,8 +36,8 @@ return (
     <div className="serverForm">
       <h1>Create A Channel!</h1>
       <form onSubmit={handleChannelCreate}>
-        <input onChange={updateChannelTitle} value={channelTitle} type="text"/>
-        <input onChange={updateChannelTopic} value={channelTopic} type="text"/>
+        <input onChange={updateChannelTitle} value={channelTitle} placeholder="Channel Title" type="text"/>
+        <input onChange={updateChannelTopic} value={channelTopic} placeholder="Channel Topic" type="text"/>
         <button type="submit">Create Channel</button>
       </form>
 
