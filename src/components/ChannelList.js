@@ -33,7 +33,7 @@ function ChannelList({ serverId }) {
     <div className='channelList border-gradient margin-fix'>
       {channelArray.map((channel, idx) => {
         return (
-          <>
+          <div key={Math.random() * 1000}>
             {channel.id === currentChannel.id ? (
               <div className='channelList__div currentChannel' key={idx} onClick={() => (joinChannel(channel))}>
                 <span key={Math.random() * 1000} className='channelList__hash'>#</span>
@@ -45,8 +45,7 @@ function ChannelList({ serverId }) {
                 <span key={Math.random() * 1000} className='channelList__channel'>{channel.title}</span>
               </div>
             )}
-
-          </>
+          </div>
         )
       })}
     </div>

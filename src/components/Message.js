@@ -5,13 +5,13 @@ import { Avatar } from '@material-ui/core'
 
 function Message({ messageInfo }) {
     const messageElement = useRef(null);
-
     useEffect(() => {
         if (messageElement.current) {
             messageElement.current.scrollIntoView({
                 block: 'nearest'
             });
         }
+
     }, []);
 
     return (
