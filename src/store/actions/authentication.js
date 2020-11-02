@@ -3,14 +3,24 @@ const baseUrl = "http://localhost:8080";
 export const TOKEN_KEY = "discord/authentication/token";
 export const SET_TOKEN = "discord/authentication/SET_TOKEN";
 export const REMOVE_TOKEN = "discord/authentication/REMOVE_TOKEN";
+export const ADD_USER = 'discord/authentication/ADD_USER';
 
+export const addUser = (username) => ({ type: ADD_USER, username });
 export const removeToken = (token) => ({ type: REMOVE_TOKEN });
 export const setToken = (token) => ({ type: SET_TOKEN, token });
 
 export const loadToken = () => async (dispatch) => {
   const token = window.localStorage.getItem(TOKEN_KEY);
   if (token) {
+    const userId = window.localStorage.getItem('userId');
     dispatch(setToken(token));
+    const response = await fetch(`${baseUrl}/users/${userId}`);
+    if (response.ok) {
+      const { username } = await response.json();
+      console.log(username);
+      dispatch(addUser(username));
+    }
+
   }
 };
 
@@ -23,7 +33,6 @@ export const login = (email, password) => async (dispatch) => {
 
   if (response.ok) {
     const { token, user } = await response.json();
-    console.log(user.id)
     window.localStorage.setItem(TOKEN_KEY, token);
     window.localStorage.setItem('userId', user.id)
     dispatch(setToken(token));

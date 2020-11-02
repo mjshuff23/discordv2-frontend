@@ -16,7 +16,6 @@ function AddServer() {
   }
 
   const handleServerCreate = (event) => {
-    // console.log(event)
     event.preventDefault();
     dispatch(createServer(serverTitle))
   }

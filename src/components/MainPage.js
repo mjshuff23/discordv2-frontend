@@ -16,12 +16,15 @@ function MainPage({ socket }) {
   const joinedChannels = useSelector(state => state.channel.joinedChannels);
   const dispatch = useDispatch();
 
-  let serverId;
-  if (!currentChannel) {
-    serverId = 1;
-  } else {
-    serverId = currentChannel.serverId;
-  }
+  // let serverId;
+  // if (!currentChannel) {
+  //   serverId = 1;
+  // } else {
+  //   serverId = currentChannel.serverId;
+  // }
+  // }
+
+   let serverId = currentChannel.serverId;
 
   useEffect(() => {
     dispatch(getServers());
@@ -50,9 +53,7 @@ function MainPage({ socket }) {
     // Listen for connections to the currentChannel
     // And add the incoming messages to Redux.
     socket.on(currentChannel.id, ({message, channel}) => {
-      console.log(
-        `Received new message for ${channel}: `, message
-      );
+      console.log(`Received new message for ${channel.title}[${channel.id}]: `, message);
       // If the current channel doesn't match the
       // channel the message belongs to, then
       // don't add the message because it shouldn't
@@ -66,12 +67,10 @@ function MainPage({ socket }) {
 
 
   function onSend(message) {
-    console.log(`Sending to ${socket.id}`, message);
     socket.emit(currentChannel.id, {
         message,
         userId: Number.parseInt(userId)
     });
-    // postChannelMessage()
   }
   return (
     <div className="mainPage">

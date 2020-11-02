@@ -6,6 +6,7 @@ import { setCurrentChannel, getChannels } from '../store/actions/channel';
 
 function ChannelList({ serverId }) {
   const channels = useSelector((state) => state.channel.channels);
+  const currentChannel = useSelector((state) => state.channel.currentChannel);
   const channelArray = Object.values(channels);
   // const currentChannel = useSelector((state) => state.channel.currentChannel);
   const dispatch = useDispatch();
@@ -32,7 +33,20 @@ function ChannelList({ serverId }) {
     <div className='channelList border-gradient margin-fix'>
       {channelArray.map((channel, idx) => {
         return (
-          <div className='channelList__div' key={idx} onClick={() => (joinChannel(channel))}><span key={Math.random() * 1000} className='channelList__hash'>#</span><span key={Math.random() * 1000} className='channelList__channel'>{channel.title}</span></div>
+          <>
+            {channel.id === currentChannel.id ? (
+              <div className='channelList__div currentChannel' key={idx} onClick={() => (joinChannel(channel))}>
+                <span key={Math.random() * 1000} className='channelList__hash'>#</span>
+                <span key={Math.random() * 1000} className='channelList__channel'>{channel.title}</span>
+              </div>
+            ) : (
+              <div className='channelList__div' key={idx} onClick={() => (joinChannel(channel))}>
+                <span key={Math.random() * 1000} className='channelList__hash'>#</span>
+                <span key={Math.random() * 1000} className='channelList__channel'>{channel.title}</span>
+              </div>
+            )}
+
+          </>
         )
       })}
     </div>

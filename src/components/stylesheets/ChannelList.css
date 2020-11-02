@@ -1,12 +1,18 @@
 .channelList__div {
   display: flex;
-  height: 5%;
-  opacity: 93%;
+  max-height: 10%;
+  font-size: 1.2em;
+  opacity: 50%;
   width: 100%;
-  color: white;
+  color: rgb(169, 169, 169);
   justify-content: right;
   margin-top: 35px;
   cursor: pointer;
+}
+
+.channelList__div:hover {
+  color: white;
+  opacity: 100%;
 }
 
 .channelList__hash {
@@ -34,4 +40,9 @@
   background-color: white;
   padding: 1px;
   margin: -1px;
+}
+
+.currentChannel {
+  color: white;
+  opacity: 100%;
 }

@@ -1,4 +1,4 @@
-import { LOAD_SERVER, ADD_SERVER, ADD_SERVERS, SET_CURRENT_SERVER } from "../actions/server";
+import { LOAD_SERVER, ADD_SERVER, SET_CURRENT_SERVER } from "../actions/server";
 // import merge from "lodash/merge";
 
 export default function reducer(state = {}, action) {

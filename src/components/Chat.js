@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
 import './stylesheets/Chat.css'
 import ChatHeader from './ChatHeader';
-import AddCirleIcon from '@material-ui/icons/AddCircle';
 import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import Message from './Message';
 import SendRoundedIcon from '@material-ui/icons/SendRounded';
@@ -50,13 +49,12 @@ function Chat({ onSend, socket }) {
                 }) : null}
             </div>
             <div className="chat__input">
-                <AddCirleIcon fontSize="large" />
                 <form onSubmit={(e) => {
                     e.preventDefault()
                     handleSubmit(e.target[0].value);
                     e.target[0].value = '';
                 }}>
-                    <input placeholder="message" />
+                    <input placeholder="Type Here!" />
                     <button className="chat__inputButton" type="submit">Send</button>
                 </form>
                 <div className="chat__inputIcons">
