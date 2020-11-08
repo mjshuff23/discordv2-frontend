@@ -118,3 +118,9 @@
     rgba(114, 137, 218, 0.8) 100%
   );
 }
+
+#sidebarJoinServer__button {
+  font-weight: 600;
+  color: #879aff;
+  border-width: 0px;
+}

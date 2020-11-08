@@ -81,9 +81,9 @@ function MainPage({ socket }) {
         </>
       ) :
         <>
-          <Sidebar />
+          <Sidebar socket={socket} />
           <ChannelList socket={socket} serverId={serverId} />
-          <Chat socket={socket} onSend={onSend}/>
+          <Chat socket={socket} onSend={onSend} />
         </>
       }
     </div>

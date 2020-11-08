@@ -1,4 +1,4 @@
-import { LOAD_SERVER, ADD_SERVER, SET_CURRENT_SERVER } from "../actions/server";
+import { JOIN_SERVER, LOAD_SERVER, ADD_SERVER, SET_CURRENT_SERVER } from "../actions/server";
 // import merge from "lodash/merge";
 
 const initialState = {
@@ -13,7 +13,7 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state, servers: {
                     ...state.servers,
-                    [action.server.id]: action.server,
+                    [action.server.serverToReturn.id]: action.server.serverToReturn,
                 }
             }
         }
@@ -21,6 +21,16 @@ export default function reducer(state = initialState, action) {
         //     const servers = action.servers.map((server) => ({ [server.id]: server}));
         //     return merge({}, state, ...servers)
         // }
+
+        case JOIN_SERVER: {
+
+            return {
+                ...state, servers: {
+                    ...state.servers,
+                    [Object.keys(state.servers).length + 1]: action.server,
+                }
+            }
+        }
 
         case LOAD_SERVER: {
             return { servers: { ...action.list } };
