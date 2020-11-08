@@ -37,7 +37,7 @@ export const joinServer = (serverId, socket) => async (dispatch) => {
 
   if (response.ok) {
     const {server, user} = await response.json()
-    console.log(`JOINING SERVER`, server)
+    // console.log(`JOINING SERVER`, server)
     dispatch(addJoinedServer(server))
     socket.emit('reloadChannels');
   }
@@ -49,10 +49,9 @@ export const getServers = () => async (dispatch) => {
 
   if (response.ok) {
     const { servers, otherServers } = await response.json()
-    console.log(otherServers)
-    console.log(servers)
+    // console.log(otherServers)
+    // console.log(servers)
     const allServers = [...servers, ...otherServers]
-    console.log(allServers)
     dispatch(loadServer(allServers))
   }
 }
