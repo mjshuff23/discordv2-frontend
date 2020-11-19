@@ -5,7 +5,7 @@ import { logout } from '../store/actions/authentication';
 import { createServer } from '../store/actions/server';
 import './stylesheets/AddServer.css';
 
-function AddServer() {
+function AddServer({ socket }) {
   const dispatch = useDispatch();
   const [serverTitle, setServerTitle] = useState('');
 
@@ -17,7 +17,7 @@ function AddServer() {
 
   const handleServerCreate = (event) => {
     event.preventDefault();
-    dispatch(createServer(serverTitle))
+    dispatch(createServer(serverTitle, socket))
   }
 
   const updateServerTitle = (event) => {

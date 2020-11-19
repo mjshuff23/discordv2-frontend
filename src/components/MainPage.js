@@ -17,13 +17,6 @@ function MainPage({ socket }) {
   const joinedChannels = useSelector(state => state.channel.joinedChannels);
   const dispatch = useDispatch();
 
-  // let serverId;
-  // if (!currentChannel) {
-  //   serverId = 1;
-  // } else {
-  //   serverId = currentChannel.serverId;
-  // }
-  // }
 
    let serverId = currentChannel.serverId;
 

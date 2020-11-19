@@ -13,7 +13,7 @@ export default function reducer(state = initialState, action) {
             return {
                 ...state, servers: {
                     ...state.servers,
-                    [action.server.serverToReturn.id]: action.server.serverToReturn,
+                    [action.server.id]: action.server,
                 }
             }
         }

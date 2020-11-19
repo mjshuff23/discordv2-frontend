@@ -89,7 +89,7 @@ function Sidebar({ socket }) {
         open={showServer}
         onClose={() => setShowServer(!showServer)}
       >
-        <AddServer />
+        <AddServer socket={socket} />
       </Popover>
     </div>
   )

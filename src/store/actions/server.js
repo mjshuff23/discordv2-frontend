@@ -11,7 +11,7 @@ export const addJoinedServer = (server) => ({ type: JOIN_SERVER, server })
 export const setCurrentServer = (serverId) => ({ type: SET_CURRENT_SERVER, serverId })
 // export const addServers = (servers) => ({ type: ADD_SERVERS, servers})
 
-export const createServer = (title) => async (dispatch) => {
+export const createServer = (title, socket) => async (dispatch) => {
   const userId = window.localStorage.getItem('userId');
   const response = await fetch(`${baseUrl}/servers`, {
     method: 'post',
@@ -20,8 +20,9 @@ export const createServer = (title) => async (dispatch) => {
   })
 
   if (response.ok) {
-    const server = await response.json()
-    dispatch(addServer(server))
+    const { server, homeChannel } = await response.json();
+    dispatch(addServer(server));
+    socket.emit('addChannelListener', homeChannel)
   }
 }
 
@@ -37,9 +38,11 @@ export const joinServer = (serverId, socket) => async (dispatch) => {
 
   if (response.ok) {
     const {server, user} = await response.json()
-    // console.log(`JOINING SERVER`, server)
+    // console.log(server?.Channels)
     dispatch(addJoinedServer(server))
-    socket.emit('reloadChannels');
+    // server.Channels.map(channel => {
+    //   socket.emit('addChannelListener', channel)
+    // })
   }
 }
 

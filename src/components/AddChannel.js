@@ -8,14 +8,9 @@ import './stylesheets/AddServer.css';
 function AddChannel({ socket }) {
   const dispatch = useDispatch();
   const currentServerId = useSelector(state => state.server.currentServer);
-  const [channelTitle, setChannelTitle] = useState('');
-  const [channelTopic, setChannelTopic] = useState('');
+  const [channelTitle, setChannelTitle] = useState(''); // Channel title state
+  const [channelTopic, setChannelTopic] = useState(''); // Channel topic state
 
-
-  // const handleLogout = (event) => {
-  //   event.preventDefault();
-  //   dispatch(logout())
-  // }
 
   const handleChannelCreate = (event) => {
     if (!currentServerId) {
