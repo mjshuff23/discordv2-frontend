@@ -1,7 +1,7 @@
-import React, { useEffect, useRef } from 'react'
+import React, { useEffect, useRef } from 'react';
 // import moment from 'moment';
-import './stylesheets/Message.css'
-import { Avatar } from '@material-ui/core'
+import './stylesheets/Message.css';
+import { Avatar } from '@material-ui/core';
 
 function Message({ messageInfo }) {
     const messageElement = useRef(null);
@@ -15,17 +15,17 @@ function Message({ messageInfo }) {
     }, []);
 
     return (
-        <div ref={messageElement} className="message">
+        <div ref={ messageElement } className="message">
             <Avatar className="messageAvatar" />
             <div className="message__info">
-                <h4>{messageInfo.userId}
-                    <span className="message__timestamp">{messageInfo.createdAt}</span>
+                <h4>{ messageInfo.User.username }
+                    <span className="message__timestamp">{ messageInfo.createdAt }</span>
                 </h4>
-                <p>{messageInfo.body}</p>
+                <p>{ messageInfo.body }</p>
             </div>
 
         </div>
-    )
+    );
 }
 
 
