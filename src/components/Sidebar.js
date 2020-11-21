@@ -54,11 +54,10 @@ function Sidebar({ socket }) {
 
       {servers.map((server, index) => {
         if (!server) return;
-        let imgurl = `http://www.google.com`;
         return (
-          <Tooltip key={ server.id } title={ server.title } placement="right">
+          <Tooltip key={ Math.random() * 100 } title={ server.title } placement="right">
             <Avatar
-              key={ server.id }
+              key={ Math.random() * 100 }
               id={ server.id }
               alt={ server.title }
               onClick={ () => {
@@ -69,8 +68,7 @@ function Sidebar({ socket }) {
                 }
               } }
               className="sidebar__serverBtn"
-              src={ imgurl }
-            />
+            >{ server.title[0] } </Avatar>
           </Tooltip>
         );
       }) }
