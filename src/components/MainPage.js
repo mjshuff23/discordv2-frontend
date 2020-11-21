@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
-import { useDispatch, useSelector } from 'react-redux'
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { getServers } from '../store/actions/server';
 import { addChannelMessage } from '../store/actions/channelMessages';
 import { addJoinedChannel } from '../store/actions/channel';
-import ChannelList from './ChannelList'
-import Chat from './Chat'
-import Sidebar from './Sidebar'
-import './stylesheets/MainPage.css'
+import ChannelList from './ChannelList';
+import Chat from './Chat';
+import Sidebar from './Sidebar';
+import './stylesheets/MainPage.css';
 
 function MainPage({ socket }) {
   const userId = window.localStorage.getItem('userId');
@@ -18,11 +18,11 @@ function MainPage({ socket }) {
   const dispatch = useDispatch();
 
 
-   let serverId = currentChannel.serverId;
+  let serverId = currentChannel.serverId;
 
   useEffect(() => {
     dispatch(getServers());
-  }, [])
+  }, []);
 
   useEffect(() => {
     if (currentChannel) {
@@ -46,24 +46,25 @@ function MainPage({ socket }) {
 
     // Listen for connections to the currentChannel
     // And add the incoming messages to Redux.
-    socket.on(currentChannel.id, ({message, channel}) => {
+    socket.on(currentChannel.id, ({ message, channel, user }) => {
       console.log(`Received new message for ${channel.title}[${channel.id}]: `, message.body);
       // If the current channel doesn't match the
       // channel the message belongs to, then
       // don't add the message because it shouldn't
       // display
       if (channel.id !== message.channelId) return;
+      message.User = user;
       dispatch(addChannelMessage(message));
     });
 
     dispatch(addJoinedChannel(currentChannel));
-  },[currentChannel, dispatch, joinedChannels, socket]);
+  }, [currentChannel, dispatch, joinedChannels, socket]);
 
 
   function onSend(message) {
     socket.emit(currentChannel.id, {
-        message,
-        userId: Number.parseInt(userId)
+      message,
+      userId: Number.parseInt(userId)
     });
   }
   return (
@@ -74,13 +75,13 @@ function MainPage({ socket }) {
         </>
       ) :
         <>
-          <Sidebar socket={socket} />
-          <ChannelList socket={socket} serverId={serverId} />
-          <Chat socket={socket} onSend={onSend} />
+          <Sidebar socket={ socket } />
+          <ChannelList socket={ socket } serverId={ serverId } />
+          <Chat socket={ socket } onSend={ onSend } />
         </>
       }
     </div>
-  )
+  );
 }
 
-export default MainPage
+export default MainPage;
