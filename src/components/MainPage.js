@@ -58,7 +58,7 @@ function MainPage({ socket }) {
     });
 
     dispatch(addJoinedChannel(currentChannel));
-  }, [currentChannel, dispatch, joinedChannels, socket]);
+  }, [currentChannel]);
 
 
   function onSend(message) {
