@@ -12,23 +12,24 @@ export const addJoinedChannel = (channel) => ({ type: ADD_JOINED_CHANNEL, channe
 
 export const getChannels = (serverId) => async (dispatch) => {
     if (!serverId) return;
-    const response = await fetch(`${baseUrl}/channels/${serverId}`)
+    const response = await fetch(`${baseUrl}/channels/${serverId}`);
     if (response.ok) {
         const { channels } = await response.json();
         dispatch(addChannels(channels));
     }
-}
+};
 
 export const createChannel = (title, serverId, socket, topic) => async (dispatch) => {
     if (!title || !serverId) return;
     if (!topic) {
         topic = '';
     }
+    // console.log('YO')
     const response = await fetch(`${baseUrl}/channels`, {
         method: 'post',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ title, topic, serverId }),
-    })
+    });
 
 
 
@@ -37,4 +38,4 @@ export const createChannel = (title, serverId, socket, topic) => async (dispatch
         dispatch(addChannel(channel));
         socket.emit('addChannelListener', channel);
     }
-}
+};
