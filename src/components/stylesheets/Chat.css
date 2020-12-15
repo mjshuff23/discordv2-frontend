@@ -3,7 +3,6 @@
   flex-direction: column;
   flex: 1;
   background-color: #363a3f;
-  opacity: 93%;
   height: 100vh;
   width: 80%;
 }
@@ -98,5 +97,4 @@
   justify-content: center;
   font-size: 1.5em;
   color: white;
-  opacity: 100%;
 }
