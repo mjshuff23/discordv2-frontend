@@ -16,7 +16,7 @@ function ChannelList({ socket, serverId }) {
 
   useEffect(() => {
     dispatch(getChannels(serverId));
-  }, []);
+  }, [dispatch, serverId]);
 
   // When someone clicks the channel button,
   // set the current Channel in Redux

@@ -22,7 +22,7 @@ function MainPage({ socket }) {
 
   useEffect(() => {
     dispatch(getServers());
-  }, []);
+  }, [dispatch]);
 
   useEffect(() => {
     if (currentChannel) {

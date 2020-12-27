@@ -1,13 +1,11 @@
 import React, { useEffect } from 'react';
-import './stylesheets/Chat.css'
+import './stylesheets/Chat.css';
 import ChatHeader from './ChatHeader';
-import EmojiEmotionsIcon from '@material-ui/icons/EmojiEmotions';
 import Message from './Message';
-import SendRoundedIcon from '@material-ui/icons/SendRounded';
 import { useDispatch, useSelector } from 'react-redux';
 import { getChannelMessages } from '../store/actions/channelMessages';
 
-function Chat({ onSend, socket }) {
+function Chat({ onSend }) {
     const dispatch = useDispatch();
     const channelMessages = useSelector(state => Object.values(state.channelMessages));
     let currentChannel = useSelector(state => state.channel.currentChannel);
@@ -42,19 +40,19 @@ function Chat({ onSend, socket }) {
 
     return (
         <div className="chat border-gradient margin-fix">
-            <ChatHeader title={currentChannel.title} channelId={currentChannel.id} topic={currentChannel.topic}/>
+            <ChatHeader title={ currentChannel.title } channelId={ currentChannel.id } topic={ currentChannel.topic } />
             <div className="chat__messages">
-                <div className="chat__topic">{currentChannel.topic}</div>
-                {channelMessages ? channelMessages.map((channelMessage, idx) => {
-                    return <Message key={idx} messageInfo={channelMessage} />
-                }) : null}
+                <div className="chat__topic">{ currentChannel.topic }</div>
+                { channelMessages ? channelMessages.map((channelMessage, idx) => {
+                    return <Message key={ idx } messageInfo={ channelMessage } />;
+                }) : null }
             </div>
             <div className="chat__input">
-                <form onSubmit={(e) => {
-                    e.preventDefault()
+                <form onSubmit={ (e) => {
+                    e.preventDefault();
                     handleSubmit(e.target[0].value);
                     e.target[0].value = '';
-                }}>
+                } }>
                     <input placeholder="Type Here!" />
                     <button className="chat__inputButton" type="submit">Send</button>
                 </form>
@@ -63,7 +61,7 @@ function Chat({ onSend, socket }) {
             </div>
 
         </div>
-    )
+    );
 }
 
 export default Chat;
