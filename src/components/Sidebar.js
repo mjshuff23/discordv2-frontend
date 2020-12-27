@@ -49,7 +49,7 @@ function Sidebar({ socket }) {
         open={ joinServerForm }
         onClose={ () => showJoinServer() }
       >
-        <JoinServer socket={ socket } />
+        <JoinServer handleClose={ showJoinServer } socket={ socket } />
       </Popover>
 
       {servers.map((server, index) => {
@@ -87,7 +87,7 @@ function Sidebar({ socket }) {
         open={ showServer }
         onClose={ () => setShowServer(!showServer) }
       >
-        <AddServer socket={ socket } />
+        <AddServer handleClose={ showServerForm } socket={ socket } />
       </Popover>
     </div>
   );

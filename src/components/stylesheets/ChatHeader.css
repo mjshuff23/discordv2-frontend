@@ -12,7 +12,7 @@
   padding: 10px;
 }
 
-.chatHeader__left > h3 {
+.chatHeader__left>h3 {
   display: flex;
   align-items: center;
   color: white;
@@ -25,12 +25,12 @@
   justify-content: flex-end;
 }
 
-.chatHeader__right > .MuiSvgIcon-root {
+.chatHeader__right>.MuiSvgIcon-root {
   padding: 5px;
   cursor: pointer;
 }
 
-.chatHeader__right > .MuiSvgIcon-root:hover {
+.chatHeader__right>.MuiSvgIcon-root:hover {
   color: white;
 }
 
@@ -43,9 +43,18 @@
   padding: 3px;
 }
 
-.chatHeader__search > input {
+.chatHeader__search>input {
   background: transparent;
   outline-width: 0;
   color: white;
   border: none;
+}
+
+.chatHeader__logout .MuiSvgIcon-root {
+  font-size: 2rem !important;
+  cursor: pointer;
+}
+
+.chatHeader__logout .MuiSvgIcon-root:hover {
+  color: white;
 }

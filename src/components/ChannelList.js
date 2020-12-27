@@ -43,7 +43,7 @@ function ChannelList({ socket, serverId }) {
         open={ showChannel }
         onClose={ () => setShowChannel(!showChannel) }
       >
-        <AddChannel socket={ socket } />
+        <AddChannel handleClose={ showChannelForm } socket={ socket } />
       </Popover>
 
       {channelArray.map((channel, idx) => {
