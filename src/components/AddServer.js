@@ -4,13 +4,14 @@ import { useDispatch } from 'react-redux';
 import { createServer } from '../store/actions/server';
 import './stylesheets/AddServer.css';
 
-function AddServer({ socket }) {
+function AddServer({ handleClose, socket }) {
   const dispatch = useDispatch();
   const [serverTitle, setServerTitle] = useState('');
 
   const handleServerCreate = (event) => {
     event.preventDefault();
     dispatch(createServer(serverTitle, socket));
+    handleClose();
   };
 
   const updateServerTitle = (event) => {
