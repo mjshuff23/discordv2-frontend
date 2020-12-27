@@ -36,9 +36,6 @@ function AddChannel({ handleClose, socket }) {
         <input onChange={ updateChannelTopic } value={ channelTopic } placeholder="Channel Topic" type="text" />
         <button type="submit">Create Channel</button>
       </form>
-
-      {/* <button onClick={handleLogout}>Logout</button> */ }
-
     </div>
   );
 }
