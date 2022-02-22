@@ -1,4 +1,4 @@
-import { baseUrl } from "../../config";
+import { baseUrl } from '../../config';
 export const ADD_SERVER = 'discord/server/ADD_SERVER';
 export const JOIN_SERVER = 'discord/server/JOIN_SERVER';
 export const ADD_SERVERS = 'discord/server/ADD_SERVERS';
@@ -8,7 +8,10 @@ export const SET_CURRENT_SERVER = 'discord/servers/SET_CURRENT';
 export const loadServer = (list) => ({ type: LOAD_SERVER, list });
 export const addServer = (server) => ({ type: ADD_SERVER, server });
 export const addJoinedServer = (server) => ({ type: JOIN_SERVER, server });
-export const setCurrentServer = (serverId) => ({ type: SET_CURRENT_SERVER, serverId });
+export const setCurrentServer = (serverId) => ({
+  type: SET_CURRENT_SERVER,
+  serverId,
+});
 
 export const createServer = (title, socket) => async (dispatch) => {
   const userId = window.localStorage.getItem('userId');
@@ -46,8 +49,9 @@ export const getServers = () => async (dispatch) => {
   const response = await fetch(`${baseUrl}/servers/${userId}`);
 
   if (response.ok) {
-    const { servers, otherServers } = await response.json();
+    const { servers, otherServers, myMessage } = await response.json();
     const allServers = [...servers, ...otherServers];
+    console.log('myMessage:', myMessage);
     dispatch(loadServer(allServers));
   }
 };
